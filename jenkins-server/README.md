@@ -17,7 +17,6 @@ This project uses Terraform to automate the deployment of a Jenkins server on an
 This project automates the deployment of a Jenkins server on an Amazon EC2 instance using Terraform. It creates a complete infrastructure setup, including a Virtual Private Cloud (VPC), public subnet, Internet Gateway, security group, and the EC2 instance itself. The Jenkins server is installed and configured automatically via a user data script, allowing you to quickly set up a CI/CD environment in the AWS cloud.
 
 With this project, you can:
-
 Deploy a fully functional Jenkins server with minimal manual effort.
 Customize the infrastructure by modifying Terraform variables.
 Ensure secure access through properly configured security groups.
@@ -34,7 +33,7 @@ The architecture of this project consists of the following components:
 - **EC2 Instance**: Runs the Jenkins server.
 - **Security Group**: Controls inbound and outbound traffic to the EC2 instance.
 
-![Architecture Diagram](./architecture.png)  
+![Architecture Diagram](../architecture.png)  
 
 ---
 
