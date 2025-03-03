@@ -2,7 +2,7 @@
 variable "aws_region" {  
   description = "The ID of the VPC"
   type        = string
-  default       = "eu-west-2"
+  default       = "eu-west-1"
 }
 
 
@@ -27,7 +27,7 @@ variable "private_subnet_cidr" {
 variable "availability_zones" {
   description = "List of availability zones"
   type        = list(string)
-  default     = ["eu-west-2a", "eu-west-2b"]
+  default     = ["eu-west-1a", "eu-west-1b"]
 }
 
 //Security group variables
@@ -42,19 +42,19 @@ variable "vpc_id" {
 variable "dbuser" {
   description = "The name of the RDS database user"
   type        = string
-  default     = "admin"
+  sensitive   = true
 }
 
 variable "dbpassword" {
   description = "The password of the RDS database user"
   type        = string
-  default     = "Testing123#"
+  sensitive   = true
 }
 
 variable "dbinstance_class" {
   description = "The instance class of the RDS database"
   type        = string
-  default     = "db.t3.medium"
+  default     = "db.t3.micro"
 }
 
 variable "db_name" {
@@ -66,13 +66,25 @@ variable "db_name" {
 variable "ecr_frontend_uri" {
   description = "The URI of the ECR frontend"
   type        = string
-  default     = "585008053249.dkr.ecr.eu-west-1.amazonaws.com/lamp-stack-frontend:latest"
+  sensitive   = true
   
 }
 
 variable "ecr_backend_uri" {
   description = "The URI of the ECR backend"
   type        = string
-  default     = "585008053249.dkr.ecr.eu-west-1.amazonaws.com/lamp-stack-backend:latest"
-  
+  sensitive   = true
+}
+
+//ECS variables
+variable "frontend_port" {
+  description = "The port for the frontend"
+  type        = number
+
+}
+
+variable "backend_port" {
+  description = "The port for the backend"
+  type        = number
+
 }

@@ -8,8 +8,8 @@ resource "aws_ecs_task_definition" "frontend" {
   family                   = "lamp-frontend-td"
   network_mode            = "awsvpc"
   requires_compatibilities = ["FARGATE"]
-  cpu                     = 1024
-  memory                  = 2048
+  cpu                     = 256
+  memory                  = 512
   execution_role_arn      = aws_iam_role.ecs_execution_role.arn
   task_role_arn           = aws_iam_role.ecs_task_role.arn
 
@@ -46,8 +46,8 @@ resource "aws_ecs_task_definition" "backend" {
   family                   = "lamp-backend-td"
   network_mode            = "awsvpc"
   requires_compatibilities = ["FARGATE"]
-  cpu                     = 1024
-  memory                  = 2048
+  cpu                     = 256
+  memory                  = 512
   execution_role_arn      = aws_iam_role.ecs_execution_role.arn
   task_role_arn           = aws_iam_role.ecs_task_role.arn
 
@@ -109,7 +109,7 @@ resource "aws_ecs_service" "frontend" {
   load_balancer {
     target_group_arn = aws_lb_target_group.frontend.arn
     container_name   = "frontend"
-    container_port   = 3000
+    container_port   = var.frontend_port
   }
 
   depends_on = [aws_lb_listener.frontend]
@@ -131,7 +131,7 @@ resource "aws_ecs_service" "backend" {
   load_balancer {
     target_group_arn = aws_lb_target_group.backend.arn
     container_name   = "backend"
-    container_port   = 80
+    container_port   = var.backend_port
   }
 
   depends_on = [aws_lb_listener.backend]
@@ -189,10 +189,10 @@ resource "aws_ecr_repository" "backend" {
 # CloudWatch Log Groups
 resource "aws_cloudwatch_log_group" "frontend" {
   name              = "/ecs/lamp-frontend"
-  retention_in_days = 30
+  retention_in_days = 7
 }
 
 resource "aws_cloudwatch_log_group" "backend" {
   name              = "/ecs/lamp-backend"
-  retention_in_days = 30
+  retention_in_days = 7
 }
