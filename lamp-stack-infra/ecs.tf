@@ -8,8 +8,8 @@ resource "aws_ecs_task_definition" "frontend" {
   family                   = "lamp-frontend-td"
   network_mode            = "awsvpc"
   requires_compatibilities = ["FARGATE"]
-  cpu                     = 256
-  memory                  = 512
+  cpu                     = 512
+  memory                  = 1024
   execution_role_arn      = aws_iam_role.ecs_execution_role.arn
   task_role_arn           = aws_iam_role.ecs_task_role.arn
 
@@ -177,14 +177,14 @@ resource "aws_iam_role" "ecs_task_role" {
   })
 }
 
-# ECR Repositories
-resource "aws_ecr_repository" "frontend" {
-  name = "lamp-frontend"
-}
+# # ECR Repositories
+# resource "aws_ecr_repository" "frontend" {
+#   name = "lamp-frontend"
+# }
 
-resource "aws_ecr_repository" "backend" {
-  name = "lamp-backend"
-}
+# resource "aws_ecr_repository" "backend" {
+#   name = "lamp-backend"
+# }
 
 # CloudWatch Log Groups
 resource "aws_cloudwatch_log_group" "frontend" {
