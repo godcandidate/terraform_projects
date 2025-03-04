@@ -22,7 +22,7 @@ resource "aws_lb_target_group" "frontend" {
   health_check {
     path                = "/"
     healthy_threshold   = 2
-    unhealthy_threshold = 10
+    unhealthy_threshold = 3
   }
 }
 
@@ -36,7 +36,7 @@ resource "aws_lb_target_group" "backend" {
   health_check {
     path                = "/"
     healthy_threshold   = 2
-    unhealthy_threshold = 10
+    unhealthy_threshold = 3
   }
 }
 
