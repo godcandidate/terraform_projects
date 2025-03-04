@@ -3,6 +3,7 @@
 This project uses Terraform to automate the deployment of a Jenkins server on an Amazon EC2 instance within a public subnet of a Virtual Private Cloud (VPC). The setup includes configuring the VPC, subnet, Internet Gateway, security group, and user data script to install Jenkins.
 
 ## Table of Contents
+
 1. [Overview](#overview)
 2. [Architecture](#architecture)
 3. [Prerequisites](#prerequisites)
@@ -14,12 +15,14 @@ This project uses Terraform to automate the deployment of a Jenkins server on an
 ---
 
 ## Overview
+
 This project automates the deployment of a Jenkins server on an Amazon EC2 instance using Terraform. It creates a complete infrastructure setup, including a Virtual Private Cloud (VPC), public subnet, Internet Gateway, security group, and the EC2 instance itself. The Jenkins server is installed and configured automatically via a user data script, allowing you to quickly set up a CI/CD environment in the AWS cloud.
 
 With this project, you can:
 Deploy a fully functional Jenkins server with minimal manual effort.
 Customize the infrastructure by modifying Terraform variables.
 Ensure secure access through properly configured security groups.
+
 ---
 
 ## Architecture
@@ -33,7 +36,7 @@ The architecture of this project consists of the following components:
 - **EC2 Instance**: Runs the Jenkins server.
 - **Security Group**: Controls inbound and outbound traffic to the EC2 instance.
 
-![Architecture Diagram](../architecture.png)  
+![Architecture Diagram](architecture.png)
 
 ---
 
@@ -54,20 +57,24 @@ Before deploying this project, ensure you have the following:
 ## Setup Instructions
 
 1. **Clone the Repository**:
+
    ```bash
    git clone https://github.com/godcandidate/terraform_projects/
    cd jenkins-server
    ```
 
 2. **Update Variables**:
+
    - Open `terraform.tfvars` and update the variables such as `aws_region`, `key_name`, and `ssh_access_cidr`.
 
 3. **Initialize Terraform**:
+
    ```bash
    terraform init
    ```
 
 4. **Plan the Deployment**:
+
    ```bash
    terraform plan
    ```
@@ -102,8 +109,8 @@ After running `terraform apply`, the following outputs will be displayed:
 
 - **Jenkins Instance Public IP**: The public IP address of the Jenkins server.
 
-
 Example:
+
 ```plaintext
 Outputs:
 
@@ -114,7 +121,7 @@ jenkins_instance_public_ip = "34.201.123.45"
 
 ## Contributing
 
- Contributions are welcome! If you find any issues or want to enhance this project, feel free to open an issue or submit a pull request.
+Contributions are welcome! If you find any issues or want to enhance this project, feel free to open an issue or submit a pull request.
 
 ---
 
