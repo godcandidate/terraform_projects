@@ -1,6 +1,6 @@
 # Create Secrets Manager secret for RDS credentials
 resource "aws_secretsmanager_secret" "rds_credentials" {
-  name = "ls-rds-credentials-2025"
+  name = "ls-rds-credentials-2025-b"
   tags = {
     Name = "ls-rds-credentials"
   }
